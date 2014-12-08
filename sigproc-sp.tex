@@ -88,9 +88,7 @@ In this section, we give an overview of the idea behind cryptocurrencies. We als
 \subsection{Cryptocurrencies}
 Cryptocurrency is an alternative medium used in exchange of goods or services. It is a form of currency that is only stored, created and managed electronically, known as digital currency. Like the traditional medium of exchange such as money, the purpose of cryptocurrency is to be used to buy physical goods and services. It uses cryptography to create new units of the currency and to secure the transactions that take place, hence the name.
 
-The idea of a cryptocurrency was conceptualized as early as 1998 by Wei Dai on the cypherpunks mailing list. He proposed a new form of money that relies on cryptography to control its creation and transaction, rather than having it managed by a centralized authority. The first implementation of cryptocurrency was created in 2009, known as Bitcoin[4].
-
-% [4] https://bitcoin.org/en/faq 
+The idea of a cryptocurrency was conceptualized as early as 1998 by Wei Dai on the cypherpunks mailing list. He proposed a new form of money that relies on cryptography to control its creation and transaction, rather than having it managed by a centralized authority. The first implementation of cryptocurrency was created in 2009, known as Bitcoin \cite{Bitcoin:2014}.
 
 One feature typically found in cryptocurrencies is its decentralized nature. Performing exchange is done by recording transactions in a public ledger. These transaction operate on a peer-to-peer network, with no centralized regulating body. This allows for pseudo-anonymous exchanges between parties.
 
@@ -99,14 +97,53 @@ While cryptocurrencies arrive in an electronic form, they are not the same as el
 
 \subsubsection{Bitcoin}
 
-Bitcoin was launched in 2009 by Satoshi Nakomoto as “an alternative to fiat currencies” [1]. Bitcoins are earned through a process called mining, in which computers use their processing power to solve complex mathematical calculations and to keep track of the many transactions added to the ledger to receive new Bitcoins. The miners compete with each other to find the solution of the complex calculations.  When a solution of the block of transaction is found (usually transactions every 10 minutes), the system that solved it is rewarded a block or 25 Bitcoins. This number of newly made Bitcoins issued is halved every four years, so by the year 2016, the amount of new Bitcoins made would be 12.5. This will be the case until there are a total of 21 million Bitcoins in the world.
+Bitcoin was launched in 2009 by Satoshi Nakomoto as ``an alternative to fiat currencies'' \cite{Worldbank:2014}. Bitcoins are earned through a process called mining, in which computers use their processing power to solve complex mathematical calculations and to keep track of the many transactions added to the ledger to receive new Bitcoins. The miners compete with each other to find the solution of the complex calculations.  When a solution of the block of transaction is found (usually transactions every 10 minutes), the system that solved it is rewarded a block or 25 Bitcoins. This number of newly made Bitcoins issued is halved every four years, so by the year 2016, the amount of new Bitcoins made would be 12.5. This will be the case until there are a total of 21 million Bitcoins in the world.
 
-% Some how segway or transition to focusing on markerless finger tracking 
-This research paper studies different approaches in markerless finger tracking.
+To obtain bitcoins from non-mining, the most common way is to exchange fiat currencies to bitcoin and people can store it into a Bitcoin wallet, which can be desktop, mobile or web-based. This medium of purchasing bitcoins, however, can be susceptible to hackers or scammers. Using these wallets, buying items online is simply just transferring bitcoins from one wallet to another \cite{Coindesk:03062014b}. Transactions made with bitcoins are safe since the public ledger (called the block chain) can be seen by all and cannot be tampered with. In order to send a Bitcoin to another wallet, two things are needed: the Bitcoin address and and a private key that are generated randomly. For example, if Alice wants to send Bob Bitcoins, she needs to use her private key to send a message to Bob's Bitcoin address that she will give him this amount of bitcoins. This transferal would not happen instantaneously as the miners need to validate the transaction made. This could take about 10 minutes or more (since mining blocks occurs about every 10 minutes).
 
-% Discuss Art of Defense, a tile-based AR tower-defense game played on the mobile
+The use of Bitcoin offers a number of advantages over using traditional mediums of exchange \cite{Bitcoin:2014}:
 
-\section{Review of Related Technology}
+\begin{enumerate}
+	\item \textbf{Payment freedom} It is possible to send and receive any amount of money instantly anywhere in the world at any time.
+	\item \textbf{Very low fees} Bitcoin payments are currently processed with either no fees or extremely small fees. Users may include fees with transactions to receive priority processing, which results in faster confirmation of transactions by the network. Additionally, merchant processors exist to assist merchants in processing transactions, converting bitcoins to fiat currency and depositing funds directly into merchants' bank accounts daily. As these services are based on Bitcoin, they can be offered for much lower fees than with PayPal or credit card networks.
+	\item \textbf{Fewer risks for merchants} Bitcoin transactions are secure, irreversible, and do not contain customers’ sensitive or personal information. This protects merchants from losses caused by fraud or fraudulent chargebacks, and there is no need for PCI compliance. Merchants can easily expand to new markets where either credit cards are not available or fraud rates are unacceptably high. The net results are lower fees, larger markets, and fewer administrative costs.
+	\item \textbf{Security and control} Bitcoin users are in full control of their transactions; it is impossible for merchants to force unwanted or unnoticed charges as can happen with other payment methods. Bitcoin payments can be made without personal information tied to the transaction. This offers strong protection against identity theft. Bitcoin users can also protect their money with backup and encryption.
+	\item \textbf{Transparent and neutral} All information concerning the Bitcoin money supply itself is readily available on the block chain for anybody to verify and use in real-time. No individual or organization can control or manipulate the Bitcoin protocol because it is cryptographically secure. This allows the core of Bitcoin to be trusted for being completely neutral, transparent and predictable.
+\end{enumerate}
+
+
+Although the use of Bitcoin is advantageous in various aspects, there are also disadvantages in using it \cite{Bitcoin:2014}:
+\begin{enumerate}
+	\item \textbf{Degree of acceptance} Many people are still unaware of Bitcoin. Every day, more businesses accept bitcoins because they want the advantages of doing so, but the list remains small and still needs to grow in order to benefit from network effects.
+	\item \textbf{Volatility} The total value of bitcoins in circulation and the number of businesses using Bitcoin are still very small compared to what they could be. Therefore, relatively small events, trades, or business activities can significantly affect the price. In theory, this volatility will decrease as Bitcoin markets and the technology matures.
+	\item \textbf{Ongoing development} Bitcoin software is still in beta with many incomplete features in active development. New tools, features, and services are being developed to make Bitcoin more secure and accessible to the masses. Some of these are still not ready for everyone. Most Bitcoin businesses are new and still offer no insurance. In general, Bitcoin is still in the process of maturing.
+\end{enumerate}
+
+
+\subsubsection{Other cryptocurrencies}
+Since the advent of Bitcoin in 2009, other cryptocurrencies followed suit. Numerous cryptocurrency specifications have been published, and a significant number of them are derived from the first implementation of Bitcoin. The two most widely adopted cryptocurrencies next to Bitcoin are Ripple and Litecoin. Table 1 shows the top 3 most widely adopted cryptocurrencies as of November 2014.
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ | l | l | l | l | }
+\hline
+  Name & Market Cap & Price / Unit & Available Supply \\ \hline \hline
+  Bitcoin   & 4,970,073,323 & 365.84 & 13.5M BTC \\ \hline
+  Ripple    & 415,005,339 & 0.013439 & 30.8B XRP \\ \hline
+  Litecoin  & 126,835,494 & 3.67 & 34.5M LTC \\ \hline
+
+\end{tabular}
+  \caption{The top 3 most widely adopted cryptocurrencies as of November 2014. Market Cap and Price per Unit is in USD.}
+\end{table}
+
+At its core, majority of these different cryptocurrency implementations all operate in a similar fashion (technically speaking). Also, these implementations of cryptocurrencies are still at a very early stage, and are likely subject to change in the future in order to adapt to the volatile state of the market. Right now, what makes a certain cryptocurrency stand out from the rest simply boils down to one thing - adoption.
+
+\cite{Coins.ph:06292014} discusses the bitcoin adoption in the Philippines as it is led by a well-known startup: Coins.ph. Ron Hose, co-founder and CEO of Coins.ph, firmly believes that bitcoin can help a great range of consumers in the Philippines. He explains that ``credit card penetration in the Philippines is 3\%, which means only three out of a hundred customers that land on an e-commerce site have an immediate way to pay for it'' \cite{Coins.ph:06292014}. A larger pain point of Filipinos would be transferring money from other countries. An estimate of around 21.3 billion USD was sent back to the country in 2010, a large portion of which are going to people who do not have bank accounts. These people have to collect money in person at retail locations like Western Union which requires a payment of 9\% in fees. Hose explains that ``the reason they pay this 9\% is because they don't have a bank account and likely will never have a bank account because they do not have enough savings.'' He further explains that that 9\% is equivalent in three-to-four days of income as payment just to pick up your money.
+
+Coins.ph is a bitcoin exchange service and merchant processor which now services two major Filipino Merchants: MetroDeal and CashCashPinoy \cite{Coins.ph:03202014}. With the announcement of the new payment method accepted by MetroDeal, the Philippine's top daily deals site, Bangko Sentral ng Pilipinas (BSP) warns its consumers about the use of digital currencies such as its high volatility and lack of protection for its consumers. Furthermore, this emerging technology has yet to have regulations.
+
+\section{Related Payment Systems}
 Vision-based hand tracking systems \cite{HurstWolfgangVanWezel:2013, HurstWolfgangVriens:2013} produced encouraging results. In \cite{Hardenberg:2001}, their finger tracking process followed the following steps:
 
 \begin{enumerate}
