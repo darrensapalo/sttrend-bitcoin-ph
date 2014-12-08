@@ -1,0 +1,306 @@
+% THIS IS SIGPROC-SP.TEX - VERSION 3.1
+% WORKS WITH V3.2SP OF ACM_PROC_ARTICLE-SP.CLS
+% APRIL 2009
+%
+% It is an example file showing how to use the 'acm_proc_article-sp.cls' V3.2SP
+% LaTeX2e document class file for Conference Proceedings submissions.
+% ----------------------------------------------------------------------------------------------------------------
+% This .tex file (and associated .cls V3.2SP) *DOES NOT* produce:
+%       1) The Permission Statement
+%       2) The Conference (location) Info information
+%       3) The Copyright Line with ACM data
+%       4) Page numbering
+% ---------------------------------------------------------------------------------------------------------------
+% It is an example which *does* use the .bib file (from which the .bbl file
+% is produced).
+% REMEMBER HOWEVER: After having produced the .bbl file,
+% and prior to final submission,
+% you need to 'insert'  your .bbl file into your source .tex file so as to provide
+% ONE 'self-contained' source file.
+%
+% Questions regarding SIGS should be sent to
+% Adrienne Griscti ---> griscti@acm.org
+%
+% Questions/suggestions regarding the guidelines, .tex and .cls files, etc. to
+% Gerald Murray ---> murray@hq.acm.org
+%
+% For tracking purposes - this is V3.1SP - APRIL 2009
+
+\documentclass{acm_proc_article-sp}
+
+\usepackage{graphicx}
+
+\begin{document}
+
+\title{Real-time Markerless Finger Tracking Using Multiple Devices}
+
+%\subtitle{[Extended Abstract]
+%\titlenote{A full version of this paper is available as
+%\textit{Author's Guide to Preparing ACM SIG Proceedings Using
+%\LaTeX$2_\epsilon$\ and BibTeX} at
+%\texttt{www.acm.org/eaddress.htm}}}
+%
+% You need the command \numberofauthors to handle the 'placement
+% and alignment' of the authors beneath the title.
+%
+% For aesthetic reasons, we recommend 'three authors at a time'
+% i.e. three 'name/affiliation blocks' be placed beneath the title.
+%
+% NOTE: You are NOT restricted in how many 'rows' of
+% "name/affiliations" may appear. We just ask that you restrict
+% the number of 'columns' to three.
+%
+% Because of the available 'opening page real-estate'
+% we ask you to refrain from putting more than six authors
+% (two rows with three columns) beneath the article title.
+% More than six makes the first-page appear very cluttered indeed.
+%
+% Use the \alignauthor commands to handle the names
+% and affiliations for an 'aesthetic maximum' of six authors.
+% Add names, affiliations, addresses for
+% the seventh etc. author(s) as the argument for the
+% \additionalauthors command.
+% These 'additional authors' will be output/set for you
+% without further effort on your part as the last section in
+% the body of your article BEFORE References or any Appendices.
+
+\numberofauthors{4} %  in this sample file, there are a *total*
+% of EIGHT authors. SIX appear on the 'first-page' (for formatting
+% reasons) and the remaining two appear in the \additionalauthors section.
+%
+\author{
+% You can go ahead and credit any number of authors here,
+% e.g. one 'row of three' or two rows (consisting of one row of three
+% and a second row of one, two or three).
+%
+% The command \alignauthor (no curly braces needed) should
+% precede each author name, affiliation/snail-mail address and
+% e-mail address. Additionally, tag each line of
+% affiliation/address with \affaddr, and tag the
+% e-mail address with \email.
+%
+% 1st. author
+\alignauthor
+Roberto Basil E. Cruz\\
+       \affaddr{De La Salle University}\\
+       \email{roberto\_{}cruz@dlsu.edu.ph}
+% 2nd. author
+\alignauthor
+\alignauthor
+Darren Karl A. Sapalo\\
+       \affaddr{De La Salle University}\\
+       \email{darren\_{}sapalo@dlsu.edu.ph}
+% 3rd. author
+\and
+\alignauthor Marvin T. Suangco\\
+       \affaddr{De La Salle University}\\
+       \email{marvin\_{}suangco@dlsu.edu.ph}
+  % use '\and' if you need 'another row' of author names
+% 4th. author
+\alignauthor
+\alignauthor Daniel Joseph G. Tan\\
+       \affaddr{De La Salle University}\\
+       \email{daniel\_{}tan@dlsu.edu.ph}
+}
+% There's nothing stopping you putting the seventh, eighth, etc.
+% author on the opening page (as the 'third row') but we ask,
+% for aesthetic reasons that you place these 'additional authors'
+% in the \additional authors block, viz.
+\date{28 November 2014}
+% Just remember to make sure that the TOTAL number of authors
+% is the number that will appear on the first page PLUS the
+% number that will appear in the \additionalauthors section.
+
+\maketitle
+\begin{abstract}
+
+This research discusses possibilities and applications of an AR finger tracking system  that supports multiple devices. The study focuses mainly on a finger modeling approach for tracking the fingertip of a single finger. It briefly discusses our research methodology and the process of finger tracking from calibration, segmentation, and finger modeling. It concludes with the baseline performance results of the finger tracking approach and the recommendations for the future work in continuing this research.
+
+\end{abstract}
+
+
+\keywords{Augmented reality, computer vision, mobile gaming, markerless finger tracking, connectivity} 
+% NOT required for Proceedings
+
+\section{Introduction}
+
+There has been growing interest in augmented reality (AR) as seen in the development of consumer AR systems such as Nintendo Wii, Xbox Kinect, and Oculus Rift. Augmented reality is defined as the integration of virtual reality and physical reality, allowing virtual and real objects to coexist in the same space \cite{Azuma:1997}. AR systems allow \textit{interaction} and \textit{visualization} of the virtual world.
+
+\subsection{AR interaction}
+
+In the above-mentioned AR systems, there are different ways of interacting with the virtual world: a Wii remote to track movement, or through hand and body gesture tracking on Kinect sensors. In the case of Kinect, it successfully performs hand and gesture tracking by using a vision-based approach: a video camera captures images and an infrared camera detects depth \cite{Raheja:2011}. Computer vision aims to enable computers to perceive the "three-dimensional structure of the world and to reconstruct its properties such as shape, illumination, and color distributions" \cite[p.3]{Szelski:2010}. By allowing the computer to construct a model of the human body from a captured image, Kinect is able to perform body gesture tracking.
+
+\subsection{AR interaction}
+In the above-mentioned AR systems, there are different ways of interacting with the virtual world: a Wii remote to track movement, or through hand and body gesture tracking on Kinect sensors. In the case of Kinect, it successfully performs hand and gesture tracking by using a vision-based approach: a video camera captures images and an infrared camera detects depth \cite{Raheja:2011}. Computer vision aims to enable computers to perceive the "three-dimensional structure of the world and to reconstruct its properties such as shape, illumination, and color distributions" \cite[p.3]{Szelski:2010}. By allowing the computer to construct a model of the human body from a captured image, Kinect is able to perform body gesture tracking.
+
+
+\subsection{AR visualization}
+
+Aside from interaction, AR also deals with the visualization of the virtual world. Some systems allows virtual objects and real objects to coexist in the same space or completely immerses the user in the virtual world using head-mounted display such as Oculus Rift \cite{Oculus}. However, some AR systems developed on the mobile device have limited device screen size for the visualization such as the case of Art of Defense \cite{Huynh:2009}, an AR Tower-defense game played on the mobile device. 
+
+% Some how segway or transition to focusing on markerless finger tracking 
+This research paper studies different approaches in markerless finger tracking.
+
+% Discuss Art of Defense, a tile-based AR tower-defense game played on the mobile
+
+\section{Review of Related Technology}
+Vision-based hand tracking systems \cite{HurstWolfgangVanWezel:2013, HurstWolfgangVriens:2013} produced encouraging results. In \cite{Hardenberg:2001}, their finger tracking process followed the following steps:
+
+\begin{enumerate}
+	\item \textbf{Image acquisition} is receiving a new image from the tracking device such as a camera.
+	\item \textbf{Image differencing} is producing segmenting from the raw image the region of interest which is the hand.
+	\item \textbf{Finger shape finding} is the recognition of the fingers from the segmented image. 
+	\item \textbf{Hand posture classification} is the identification of the hand gesture configuration; e.g. fist, pointing gesture, pinch, etc.
+	\item \textbf{Application} is the module that will test the performance of the system.
+\end{enumerate}
+
+In general, our finger tracking process follows a similar process: calibration, acquisition, segmentation, finger modeling, and the application. The hand posture classification step is removed because our system is limited to a fixed pointing gesture. This paper focuses on the segmentation and calibration processes.
+
+There have been numerous hand tracking AR systems that have performed \textbf{segmentation} using image differencing \cite{Hardenberg:2001, Song:2008}, depth \cite{Kulshreshth:2013, Raheja:2011} or color thresholding \cite{Byron:2009, Gumpp:2006} to retrieve the region of interest: the hand. From the segmented image, systems would then perform \textbf{finger modeling} to determine the hand's position, gesture, or the position of the fingertips. Some examples of hand modeling would be finger shape detection \cite{Song:2008,Hardenberg:2001}, 3D hand modeling \cite{Byron:2009, Gumpp:2006} and pose estimation \cite{SchlattmannKahlesz:2007, Wang:2011}. The aforementioned systems were able to track the hand accurately and in real-time, but some had to use markers to aid the tracking system \cite{Chun:2013, Refinger:2007, Huynh:2009} and had bulky setups \cite{SchlattmannKahlesz:2007, Wang:2011}.
+
+
+\subsection{Segmentation}
+
+Segmentation of an image is the process of separating a certain region of interest from the rest of the image. This involves removing noise, background clutter, or shadows so that a binary image is produced. A binary image is an image made up of pixels with each having a value of either zero (0) or one (1). A general way to produce a binary image is through thresholding, which involves inspecting each pixel in an image and setting its value to 1 if the pixel falls in the threshold value pair of \( (low, high) \) and 0 otherwise. There are many different ways of performing image segmentation, but for the purpose of this study, we will be discussing smart image differencing, depth thresholding, and color segmentation.
+
+\subsubsection{Smart Image Differencing}
+Smart image differencing is an approach developed by von Hardenberg and B\'erard \cite{Hardenberg:2001} that was derived from image differencing. Image differencing is the process of comparing two images and detecting any difference or change between their pixels, and then generating a new image based on the detected differences of the pixels. The first image is referred to as the reference image, which in the context of finger tracking is usually the first frame captured by the camera. The reference image is then compared to the succeeding images or frames from the video stream being captured by the camera.
+\cite{Hardenberg:2001} built upon this approach with smart image differencing. Instead of the reference image constantly being the first image captured by the camera, smart image differencing allows the reference
+image to learn the background from the captured images over time. This approach shows the best results only when the background is static and the object of interest in the foreground is constantly moving. A possible drawback from this approach is that it is assumed that the constantly moving object in the foreground does not rest in one position for more than 10 seconds. Another problem in this approach is that it is difficult to detect the difference when the object of interest in the foreground moves towards non-moving dark objects in the background.
+
+\subsubsection{Depth Thresholding}
+Depth thresholding can be performed with hardware that makes use of infrared (IR) technology. Microsoft's KINECT has an IR sensor that can compute and track the depth of an image, as well as an RGB camera that can capture images in either a 1280x960 resolution at 12 frames per second (FPS), or a 640x480 resolution at
+30 FPS. Using KINECT, a depth image output can also be acquired which is composed of different color groups or blobs which represent the parts of the image that have different levels of depth. Raheja, et. al. \cite{Raheja:2011} conducted a study that leveraged the KINECT to track fingertips and the center of the palm. Once the depth image was acquired, it was segmented after applying a calculated threshold value onto the color blobs of the regions where the hand points are located.
+
+\subsubsection{Color Segmentation}
+Color segmentation isolates different regions of interest in an image by differentiating them by color. Given a raw captured image, the default blue, green and red (BGR) colorspace is converted into the hue, saturation and value (HSV) colorspace, and the thresholding process is applied to the generated HSV image using a selected threshold. For this approach, there are three \( (low, high) \) pairs of threshold values, which are for the hue, saturation, and value channels. The success of the segmentation relies heavily on the selected color threshold which is necessary to differentiate the skin color of the current user. 
+
+To determine the color threshold, a genetic algorithm was implemented to find an adequate HSV (hue-saturation-value) color threshold for color segmentation. After a number of epochs, the algorithm chooses the best color threshold within the population based on a set of heuristics or fitness score.
+
+\subsection{Finger modeling}
+Once the appropriate binary image that shows the properly segmented region of interest is produced, the next step is to detect the fingertip. The following approaches use different modeling techniques to produce a model of a hand or a finger and identify the fingertip.
+
+\subsubsection{Von Hardenberg and B\'erard's Finger Modeling Approach}
+Von Hardenberg and B\'erard\cite{Hardenberg:2001} presented an algorithm to find fingertip shapes given a binary image of a hand. Two features of a fingertip were discussed: first, the center of the fingertip is enclosed in a circle of filled (1) pixels, whose diameter is detemined by the width of the finger; and second, within a certain search square area surrounding the fingertip's inner circle, the fingertip is surrounded by a large number of unfilled (0) pixels, and is followed by a smaller number of filled pixels.
+
+Given an (x, y) position and a region of interest, the algorithm adds the number of filled pixels around said (x, y) position within a circle of a certain diameter. The algorithm then checks for the following to determine whether or not the position is a fingertip: (1) there has to be enough filled pixels around the given position but it should not exceed a certain circle area; (2) there has to be a correct number of filled pixels vs. non-filled pixels within the search square; (3) the filled pixels outside the circle and along the search square have to be connected in a chain.
+
+\subsubsection{$\kappa$-curvature}
+The fingertip can be identified by finding the extended finger in a binary image, which is usually a protruding region in the contour of the hand. This can be determined by inspecting how much the contour curves, which can be done using the $\kappa$-curvature approach. Given a list of points in the contour, each point is inspected to see how much it curves in relation to the other points. An arbitrarily chosen $\kappa$ dictates the distance of the relative points from the selected point.
+
+It should be noted however that the space between fingers is recognized to have high curvature as well. $\kappa$-curvature can detect pointed areas of the hand but protruding regions do not necessarily mean fingers (e.g. knuckles or other crevices in the contour). A simple heuristic to avoid these kinds of problems would be to check for the distance of the tip of the finger from the center of the closed hand.
+
+\subsubsection{Convex Hull and Convexity Defects}
+Given the contour of a hand and its different outward and inward curvatures, a convex hull is a polygon which covers the outermost points of the contour. This is akin to putting a 2D rubber band around the contour. The basic algorithm for drawing the hull involves acquiring all the external points of the contour, then for every point, getting the next two points. If the set makes a convexity defect, then the second point is ignored and the remaining points are connected. A convexity defect is the area between the convexity hull and the inward-curving part of the contour which has not been covered by the convex hull. This is usually used to determine how many fingers are raised by the hand.
+
+% end the environment with {table*}, NOTE not {table}!
+
+\section{System Setup}
+
+
+	As seen in figure~\ref{fig:draftsetup}, the system uses mobile devices, a server such as a laptop or a computer, a router, and a projector. The mobile device is used to capture images and to perform finger tracking. This makes the setup portable and still capable of finger tracking. Moreover, using more of mobile devices the system can make a larger tracking space by tracking different physical spaces. Next is the server. It runs the game application and communicates with the clients (mobile devices), sending and receiving data to each other. Also the server is responsible for the visualization of the virtual space. Lastly, a router is used to connect the devices to one another. Its main function is connecting the clients to the server.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=2.5in]{systemsetup}
+\caption{Set up of the mobile network connected tracking system}
+\label{fig:draftsetup}
+\end{figure}
+
+\section{Convex hull finger tracking}
+
+%Our approach uses the convex hull that was 
+
+From the contour of the segmented image, a convex hull is created. Dense areas of points of the convex hull are then detected using the exterior points. With these areas, a minimum spanning ellipse can be formed around the convex hull, and the two farthest points from the center of the ellipse would be considered as a finger. After that, the tracking space is limited to a smaller set so that area near the edge of image is not considered, and the last point remaining would be the fingertip. This approach deemed effective since our setup uses only a pointing hand gesture, but can be problematic if an open hand would be tracked.
+
+\section{Evaluation}
+
+It is important to be able to measure the performance of the different processes of finger tracking so that the system can be evaluated, providing direction for improving the system. The color segmentation and the finger tracking approach were identified to be crucial processes in finger tracking. For the scope of this paper, the evaluation methodology of the finger tracking approach will be discussed in section~\ref{finger_tracking_evaluation}.
+
+% Do not include GA Calibration evaluation since we don't have the code + the results of that test
+
+\subsection{Annotated dataset}
+To be able to automate the performance evaluation of our finger tracking system, a dataset containing one hundred fifty (150) images of hands with the pointing gesture of ten (10) participants were collected and manually annotated. The participants were mostly Filipino and Chinese college students who had skin color ranging from dark brown to yellow. The annotation is stored in the file name, which contains the following format: \textbf{ID X x Y y.png}. Below is an example file name.
+
+\[
+1 \enskip X \enskip 307 \enskip Y \enskip 274 .png
+\]
+
+
+The \textit{ID} is a unique identifier of the image and \textit{x, y} are the coordinate points of the actual finger tip found in the image. See Appendix~\ref{sample_dataset} for a sample image from the dataset.
+
+\subsection{Finger tracking}
+\label{finger_tracking_evaluation}
+
+Throughout the study, different finger tracking approaches were studied to see which approach would be feasible on the mobile device. With a \textit{FingerTracking} abstract class, different tracking approaches can be implemented and evaluated. To evaluate a selected finger tracking approach, a \textit{TrackingTester} class was developed which loads the annotated dataset containing both images and the actual point. The selected finger tracking approach is then evaluated by checking to see the distance between the \textbf{actual point} and the \textbf{detected point}. The \textit{actual point} is the annotated point on the dataset, and the \textit{detected point} is the result of the finger tracking approach used on the image. The \textit{distance} is the euclidean distance between the two points and \textit{threshold} is an arbitrary value that dictates how many pixels the detected point can vary from the actual point. The score of the tracking approach on a single image is described by the equation below:
+\begin{equation}
+Score = 0 < \frac{threshold}{distance} < 1
+\end{equation}
+
+Because of this design, the different tracking approaches can be evaluated rapidly, as well as different configurations of a single tracking approach. An example of different configurations could be a varying threshold values or varying rate of learning for the reference image in a smart image differencing approach. This automated evaluation aids in the selection of the best configuration for a single tracking approach.
+
+\section{Results}
+
+
+
+\begin{table}[h]
+\centering
+\caption{Performance of Convex Hull Approach}
+\begin{tabular}{r|c|c|c|c|}
+\cline{2-5}
+\multicolumn{1}{c|}{}                    & \multicolumn{4}{c|}{\textbf{Tile size}} \\ \hline
+\multicolumn{1}{|l|}{\textbf{Threshold}} & 3x3      & 4x4      & 5x5     & 6x6     \\ \hline
+\multicolumn{1}{|r|}{1}                  & 66.16\%  & 77.62\%  & 84.56\% & 87.95\% \\ \hline
+\multicolumn{1}{|r|}{2}                  & 89.13\%  & 93.57\%  & 94.83\% & 95.51\% \\ \hline
+\multicolumn{1}{|r|}{3}                  & 94.7\%   & 95.5\%   & 95.85\% & 96.02\%   \\ \hline
+\end{tabular}
+\label{table:performance}
+\end{table}
+
+To test the performance of our approach, numerous tests were conducted where the threshold for the scoring was given a value of 1, 2 and 3. Furthermore, the tracking space was rescaled into a smaller resolution. A pixel in the newly scaled image would the size of a 3x3, 4x4, 5x5, or 6x6 dimension of pixels of the original image. The scores of each image would then be averaged for each test.
+
+As seen in table~\ref{table:performance}, both the tile size and threshold affect the score of the finger tracking. Most of the tests scored at least 80.0\%, which is a promising result for the convex hull tracking approach. Moreover, out of the 150 images from the dataset, only six (6) had an internal tracking score less than 20.0\%. It should be noted that this approach may be effective for this specific setup, since only a pointed finger is being tracked.
+
+\section{Conclusions}
+
+The finger was successfully tracked using an approach specifically addressing the shape of a pointed finger with an accuracy of at least 80\%. There can be optimizations for the finger tracking algorithm that could further increase the performance of the system in terms of accuracy.
+
+%\end{document}  % This is where a 'short' article might terminate
+
+%ACKNOWLEDGMENTS are optional
+\section{Acknowledgments}
+
+We would like to thank our thesis adviser, Sir Solomon See, for guiding us throughout the course of our research.
+
+
+%
+% The following two commands are all you need in the
+% initial runs of your .tex file to
+% produce the bibliography for the citations in your paper.
+\bibliographystyle{abbrv}
+\bibliography{myreferences}  % sigproc.bib is the name of the Bibliography in this case
+% You must have a proper ".bib" file
+%  and remember to run:
+% latex bibtex latex latex
+% to resolve all references
+%
+% ACM needs 'a single self-contained file'!
+%
+%APPENDICES are optional
+%\balancecolumns
+\appendix
+%Appendix A
+\section{Dataset sample image}
+\label{sample_dataset}
+Figure~\ref{fig_sim} shows a sample image from the annotated dataset. As you can see, the captured image contains a hand with a pointing gesture, with the hand curled into a fist except the index finger which is stretched out. Notice that the captured image has a clear, uncluttered desk with a white background. Also note that there are shadows and changes in illumination.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=2.5in]{sample_dataset_instance}
+\caption{Image 136 from the annotated dataset}
+\label{fig_sim}
+\end{figure}
+
+
+% That's all folks!
+\end{document}
